@@ -6,8 +6,6 @@ import OrderOption from '../../features/OrderOption/OrderOption';
 import { Row, Col} from 'react-flexbox-grid';
 import pricing from '../../../data/pricing.json';
 
-
-
 const OrderForm = props => {
   return (
     <Row>
