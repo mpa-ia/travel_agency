@@ -18,3 +18,14 @@ $transition: all 0.5s;
     @content;
   }
 }
+
+@keyframes viewsFromBottom {
+  0% {
+    margin-top: 200px;
+    // opacity: 0;
+  }
+  100% {
+    margin-top: 0;
+    // opacity: 1;
+  }
+}
