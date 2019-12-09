@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './OrderOption.scss';
+import { formatPrice } from '../../../utils/formatPrice';
 
 const newValueSet = (currentValue, id, checked ) => {
   if (checked) {
@@ -24,7 +25,7 @@ const OrderOptionCheckboxes = ({ currentValue, values, setOptionValue }) => {
             checked={currentValue.includes(value.id)}
             onChange={event => setOptionValue(newValueSet(currentValue, value.id, event.currentTarget.checked))}
           />
-          {value.name}
+          {value.name} ({formatPrice(value.price)})
         </label>
       ))}
     </div>
