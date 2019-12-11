@@ -17,4 +17,13 @@ describe('Component TripSummary', () => {
     expect(component.find('img').prop('src')).toEqual(expectedImg);
     expect(component.find('img').prop('alt')).toEqual(expectedAlt);
   });
+
+  it('renders correct name, cost & days', () => {
+    const expectedName = 'John';
+    const expectedCost = '560';
+    const expectedDays = 7;
+    const component = shallow(<TripSummary name={expectedName} days={expectedDays} cost={expectedCost} image='image.jpg' id='id' tags={['a', 'b']}/>);
+
+    expect(component).toBeTruthy();
+  });
 });
