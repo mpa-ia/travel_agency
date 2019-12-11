@@ -2,6 +2,7 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import TripSummary from './TripSummary';
 
+// POPRAW
 describe('Component TripSummary', () => {
   it('should render link to correct path', () => {
     const id = 'abc';
@@ -25,5 +26,15 @@ describe('Component TripSummary', () => {
     const component = shallow(<TripSummary name={expectedName} days={expectedDays} cost={expectedCost} image='image.jpg' id='id' tags={['a', 'b']}/>);
 
     expect(component).toBeTruthy();
+  });
+
+  it('renders all tags in appropriate order', () => {
+    const expectedTags = ['day', 'month', 'year'];
+    const component = shallow(<TripSummary id='id' image='image.jpg' name='name' cost='1000' tags={expectedTags} />);
+
+    for (let i = 0; i < expectedTags.length; i++) {
+      expect(component.find('.tag').at(i).text()).toEqual(expectedTags[i]);
+    }
+
   });
 });
