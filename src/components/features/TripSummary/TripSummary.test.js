@@ -19,6 +19,10 @@ describe('Component TripSummary', () => {
     expect(component.find('img').prop('alt')).toEqual(expectedAlt);
   });
 
+  it('should throw errow without required props', () => {
+    expect(() => shallow(<TripSummary />)).toThrow();
+  });
+
   it('renders correct name, cost & days', () => {
     const expectedName = 'John';
     const expectedCost = '560';
