@@ -6,7 +6,7 @@ import Icon from '../../common/Icon/Icon';
 import { formatPrice } from '../../../utils/formatPrice';
 
 const OrderOptionIcons = ({values, required, setOptionValue, currentValue }) => (
-  <div className={styles.icons}>
+  <div>
     {required ? '' : (
       <div>
         onClick={emptyString => setOptionValue(emptyString)}
