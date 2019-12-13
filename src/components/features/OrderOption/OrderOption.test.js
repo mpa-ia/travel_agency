@@ -108,6 +108,20 @@ for (let type in optionTypes) {
         });
         break;
       }
+      case 'icon': {
+        it('contains div with class .icon', () => {
+          const div = renderedSubcomponent.find('.icon');
+          expect(div.length).toBe(1);
+
+          const emptyDiv = renderedSubcomponent.find('div').not('.icon');
+          expect(emptyDiv.length).toBe(1);
+        });
+
+        it('should run SetOrderOption on change', () => {
+          renderedSubcomponent.find('.icon').simulate('click');
+          expect(mockSetOrderOption).toBeCalledTimes(1);
+        });
+      }
     }
   });
 }
