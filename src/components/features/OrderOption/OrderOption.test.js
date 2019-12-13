@@ -121,6 +121,7 @@ for (let type in optionTypes) {
           renderedSubcomponent.find('.icon').simulate('click');
           expect(mockSetOrderOption).toBeCalledTimes(1);
         });
+        break;
       }
     }
   });
