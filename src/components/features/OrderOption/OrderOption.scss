@@ -41,6 +41,11 @@
   }
 }
 
+.label {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
 .checkboxes {
   display: flex;
   flex-direction: column;
@@ -48,4 +53,19 @@
   color: $color-light;
   border-radius: 5px;
   font-size: $base-size * 1.5;
+  padding-left: 30px;
+  position: relative;
 }
+
+.checkIcon {
+  color: $color-primary;
+  border: 1px solid lighten($color-dark, 60%);
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 0;
+  transform: translateY(30%);
+  line-height: 20px;
+}
+
