@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './OrderForm.scss';
 
 import OrderSummary from '../../features/OrderSummary/OrderSummary';
 import OrderOption from '../../features/OrderOption/OrderOption';
@@ -40,9 +41,9 @@ const sendOrder = (options, tripCost) => {
 };
 const OrderForm = ({options, tripCost, setOrderOption}) => {
   return (
-    <Row>
+    <Row className={styles.component}>
       {pricing.map(option => (
-        <Col key={option.id} md={4}>
+        <Col key={option.id} md={6}>
           <OrderOption {...option} currentValue={options[option.id]} setOrderOption={setOrderOption}/>
         </Col>
       )

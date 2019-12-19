@@ -3,6 +3,8 @@
 .component {
   position: relative;
   margin: ($base-size * 2) 0;
+  color: $color-light;
+  padding-left: 20px;
   @include p-el('before') {
     content: '';
     width: ($base-size * 4);
@@ -10,5 +12,12 @@
     top: ($base-size * -1);
     left: 0;
     background: $color-dark;
+
+  }
+
+  strong {
+    color: $color-primary;
+    padding-left: 10px;
+    font-size: $base-size * 2.5;
   }
 }

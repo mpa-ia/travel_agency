@@ -8,7 +8,7 @@ const OrderOptionNumber = ({currentValue, limits, setOptionValue, price}) => {
   return(
     <div className={styles.number}>
       <input
-        className={styles.inputSmall}
+        className={styles.input}
         type='number'
         value={currentValue}
         min={limits.min}

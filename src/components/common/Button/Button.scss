@@ -1,7 +1,7 @@
 @import '../../../styles/settings.scss';
 
 .component {
-  background: $color-dark;
+  background: $color-primary;
   border: 0;
   color: $color-light;
   text-align: center;
@@ -13,9 +13,10 @@
   font-weight: 700;
   text-transform: uppercase;
   transition: $transition;
+  color: $color-decorator;
 
   &:hover {
-    background: darken($color-dark, 5%);
+    transform: scale(1.2);
   }
 
   &.danger {

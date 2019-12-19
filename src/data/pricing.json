@@ -33,6 +33,11 @@
     ]
   },
   {
+    "id": "start-date",
+    "name": "Preferred trip start",
+    "type": "date"
+  },
+  {
     "id": "adults",
     "name": "Adult guests",
     "type": "number",
@@ -63,12 +68,7 @@
   {
     "id": "contact",
     "placeholder": "Enter here...",
-    "name": "Contact info (phone, email, etc.)",
+    "name": "Contact info (phone/email)",
     "type": "text"
-  },
-  {
-    "id": "start-date",
-    "name": "Preferred trip start",
-    "type": "date"
   }
 ]

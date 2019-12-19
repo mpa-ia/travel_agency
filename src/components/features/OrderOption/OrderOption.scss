@@ -1,26 +1,35 @@
 @import '../../../styles/settings.scss';
 
 .component {
-  margin-bottom: ($base-size * 3);
+  margin: ($base-size * 3) $base-size;
 }
 
 .title {
   margin-bottom: ($base-size * 2);
+  font-size: 1.2rem;
+  font-weight: 100;
+  text-transform: uppercase;
+  color: lighten($color-decorator, 30%);
 }
 
 .input, .dropdown {
-  width: 80%;
+  width: 90%;
   border: 1px solid lighten($color-dark, 60%);
-  padding: ($base-size / 2);
-  &Small {
-    width: 30%;
-  }
+  padding: $base-size;
+  background: $color-dark;
+  border: 1px solid $color-background;
+  color: $color-light;
+  border-radius: 5px;
+  font-size: $base-size * 1.5;
 }
 
 .icon {
   cursor: pointer;
   width: 80%;
   padding: ($base-size / 2);
+  color: $color-light;
+  border-radius: 5px;
+  font-size: $base-size * 1.5;
 
   i {
     padding-right: ($base-size / 2);
@@ -28,10 +37,15 @@
 
   &Active {
     background: $color-primary;
+    color: $color-decorator;
   }
 }
 
 .checkboxes {
   display: flex;
   flex-direction: column;
+  color: $color-background;
+  color: $color-light;
+  border-radius: 5px;
+  font-size: $base-size * 1.5;
 }

@@ -1,1 +1,8 @@
 @import '../../../styles/settings.scss';
+
+.component {
+  background: $color-dark;
+  max-width: 700px;
+  margin: 0px auto;
+  padding-bottom: 30px;
+}
