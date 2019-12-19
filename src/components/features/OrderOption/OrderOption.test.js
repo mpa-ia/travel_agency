@@ -1,6 +1,7 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import OrderOption from './OrderOption';
+import DatePicker from 'react-datepicker';
 
 describe('Component OrderOption', () => {
   it('should render without crashing', () => {
@@ -47,6 +48,7 @@ const mockProps = {
     min: 0,
     max: 6,
   },
+  date: '2019-12-09',
 };
 
 const mockPropsForType = {
@@ -60,6 +62,8 @@ const mockPropsForType = {
 
 const testValue = mockProps.values[1].id;
 const testValueNumber = '3';
+const testDate = new Date(mockProps.date);
+const testDateValue = mockProps.date;
 
 for (let type in optionTypes) {
   describe(`Component orderOption with type=${type}`, () => {
@@ -146,6 +150,19 @@ for (let type in optionTypes) {
           renderedSubcomponent.find('input').simulate('change', {currentTarget: {value: testValue}});
           expect(mockSetOrderOption).toBeCalledTimes(1);
           expect(mockSetOrderOption).toBeCalledWith({[mockProps.id]: testValue});
+        });
+        break;
+      }
+      case 'date': {
+        it('contains DatePicker component', () => {
+          const dateInput = renderedSubcomponent.find(DatePicker);
+          expect(dateInput.length).toBe(1);
+        });
+
+        it('should run SetOrderOption on change', () => {
+          renderedSubcomponent.find(DatePicker).simulate('change', testDate);
+          expect(mockSetOrderOption).toBeCalledTimes(1);
+          expect(mockSetOrderOption).toBeCalledWith({[mockProps.id]: testDateValue});
         });
         break;
       }

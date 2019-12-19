@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import DatePicker from 'react-datepicker';
 import PropTypes from 'prop-types';
+import dateToString from '../../../utils/dateToString';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -16,7 +17,7 @@ const OrderOptionDate = ({ setOptionValue }) => {
       selected={startDate}
       onChange={date => {
         setStartDate(date);
-        setOptionValue(date);
+        setOptionValue(dateToString(date));
       }}
       minDate={new Date()}
     />
