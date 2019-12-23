@@ -28,7 +28,7 @@ describe('Component HappyHourAdd', () => {
   it('should display title and description delivered via props', () => {
     const component = shallow(<HappyHourAd title={mockProps.title} description={mockProps.description}/>);
     expect(component.find(select.title).text()).toEqual(mockProps.title);
-    /* expect(component.find(select.description).text()).toEqual(mockProps.description); */
+    expect(component.find(select.description).text()).toEqual(mockProps.description);
   });
 });
 
@@ -91,3 +91,12 @@ describe('Component HappyHourAd with mocked Date and delay', () => {
   checkDescriptionAfterTime('11:59:58', 1, '1');
   checkDescriptionAfterTime('13:00:00', 60 * 60, 22 * 60 * 60 + '');
 });
+
+/* TEST - component should display text between 12:00:00 and 12:59:59 */
+
+describe('Component HappyHourAdd with mocked Date', () => {
+  checkDescriptionAtTime('12:37:58', mockProps.description);
+  checkDescriptionAtTime('12:59:59', mockProps.description);
+  checkDescriptionAtTime('12:00:00', mockProps.description);
+});
+
