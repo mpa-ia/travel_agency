@@ -26,5 +26,12 @@ describe('utils', () => {
     it('should return null if there is no arg', () => {
       expect(discountPrice()).toBe(null);
     });
+    it('should return null if one of arg is not a number', () => {
+      expect(discountPrice('abc', 20)).toBe(null);
+      expect(discountPrice(45357, 'abc')).toBe(null);
+      expect(discountPrice('xyz', 'abc')).toBe(null);
+      expect(discountPrice(()=>{}, 20)).toBe(null);
+      expect(discountPrice(35632, ()=>{})).toBe(null);
+    });
   });
 });
