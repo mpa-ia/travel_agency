@@ -33,5 +33,9 @@ describe('utils', () => {
       expect(discountPrice(()=>{}, 20)).toBe(null);
       expect(discountPrice(35632, ()=>{})).toBe(null);
     });
+    it('should return null if one of arg is lower than 0',() => {
+      expect(discountPrice(-3, 20)).toBe(null);
+      expect(discountPrice(35364, -2)).toBe(null);
+    });
   });
 });
