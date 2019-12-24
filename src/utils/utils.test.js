@@ -1,4 +1,5 @@
 import { formatTime } from './formatTime.js';
+import { discountPrice } from './discountPrice.js';
 
 describe('utils', () => {
   describe ('formatTime', () => {
@@ -18,6 +19,12 @@ describe('utils', () => {
       expect(formatTime(3793)).toBe('01:03:13');
       expect(formatTime(120)).toBe('00:02:00');
       expect(formatTime(3604)).toBe('01:00:04');
+    });
+  });
+
+  describe('discountPrice', () => {
+    it('should return null if there is no arg', () => {
+      expect(discountPrice()).toBe(null);
     });
   });
 });
