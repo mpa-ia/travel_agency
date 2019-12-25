@@ -1,10 +1,15 @@
+import {parseOptionPrice} from './parseOptionPrice';
+
 export const discountPrice = (regularPrice, discount) => {
-  if (regularPrice == null
+  let price = parseOptionPrice(regularPrice).value;
+  if (price == null
     ||
-    (isNaN(regularPrice) || isNaN(discount))
+    (isNaN(price) || isNaN(discount))
     ||
-    (regularPrice < 0 || discount < 0)
+    (price <= 0 || discount < 0)
   ) {
     return null;
+  } else {
+    return price - (price * (discount/100));
   }
 };
