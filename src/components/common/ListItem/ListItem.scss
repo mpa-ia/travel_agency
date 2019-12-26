@@ -3,3 +3,10 @@
 .component {
   margin-bottom: $base-size;
 }
+
+small {
+  padding-left: 44px;
+  color: darken($color-light, 50%);
+  font-size: 0.75em;
+  font-weight: bolder;
+}
