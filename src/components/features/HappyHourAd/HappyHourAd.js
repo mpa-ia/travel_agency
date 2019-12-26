@@ -9,7 +9,7 @@ class HappyHourAd extends React.Component {
   constructor(){
     super();
 
-    setInterval(() => {
+    this.interval = setInterval(() => {
       this.forceUpdate();
     }, 1000);
   }
@@ -19,6 +19,9 @@ class HappyHourAd extends React.Component {
     description: PropTypes.string,
   }
 
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
 
   getCountdownTime () {
     const currentTime = new Date();
