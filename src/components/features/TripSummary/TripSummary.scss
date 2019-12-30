@@ -38,7 +38,7 @@
 
 .details {
   padding: 0 ($base-size * 2);
-  color: $color-secondary;
+  color: $color-decorator;
   font-weight: 700;
   span {
     display: block;
@@ -53,7 +53,7 @@
 }
 
 .tag {
-  background: $color-secondary;
+  background: $color-decorator;
   color: $color-light;
   border-radius: $radius;
   padding: ($base-size / 2);
