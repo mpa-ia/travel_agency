@@ -14,10 +14,11 @@ import { formatPrice } from '../../../utils/formatPrice';
 import { calculateTotal } from '../../../utils/calculateTotal';
 import { discountPrice } from '../../../utils/discountPrice';
 
-const sendOrder = (options, tripCost) => {
+const sendOrder = (trip, options, tripCost) => {
   const totalCost = formatPrice(calculateTotal(tripCost, options));
 
   const payload = {
+    ...trip,
     ...options,
     totalCost,
   };
@@ -40,7 +41,9 @@ const sendOrder = (options, tripCost) => {
       console.log('parsedResponse', parsedResponse);
     });
 };
-const OrderForm = ({options, tripCost, setOrderOption}) => {
+
+const OrderForm = ({trip, options, tripCost, setOrderOption}) => {
+  console.log(trip);
   const timeUTC = new Date(new Date().toUTCString().substr(0, 25));
   return (
     <Row className={styles.component}>
@@ -52,7 +55,7 @@ const OrderForm = ({options, tripCost, setOrderOption}) => {
       )}
       <Col xs={12}>
         <OrderSummary cost={timeUTC.getHours() == 12 ? formatPrice(discountPrice(tripCost, 20)): tripCost} options={options} />
-        <Button onClick={() => sendOrder(options, tripCost)}>Order Now!</Button>
+        <Button onClick={() => sendOrder(trip, options, tripCost)}>Order Now!</Button>
       </Col>
     </Row>
   );
@@ -63,6 +66,7 @@ OrderForm.propTypes = {
   tripCost: PropTypes.string,
   options: PropTypes.object,
   setOrderOption: PropTypes.func,
+  trip: PropTypes.object,
 };
 
 export default OrderForm;

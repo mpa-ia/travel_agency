@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router';
 import HTMLParser from 'react-html-parser';
 
 import NotFound from '../NotFound/NotFound';
@@ -18,7 +19,7 @@ import {Grid, Row, Col} from 'react-flexbox-grid';
 import { discountPrice } from '../../../utils/discountPrice';
 import { formatPrice } from '../../../utils/formatPrice';
 
-const Trip = ({error, name, image, cost, days, description, country, intro}) => {
+const Trip = ({error, name, image, cost, days, description, country, intro, id}) => {
   const timeUTC = new Date(new Date().toUTCString().substr(0, 25));
   if(error) return <NotFound />;
   else return (
@@ -79,7 +80,7 @@ const Trip = ({error, name, image, cost, days, description, country, intro}) => 
         <Row>
           <Col xs={12}>
             <PageTitle text='Trip options' />
-            <OrderForm tripCost={cost} />
+            <OrderForm tripCost={cost} trip={{country: country.name, tripId: id, countryCode: country.alpha3Code}}/>
           </Col>
         </Row>
       </Grid>
@@ -94,6 +95,7 @@ Trip.propTypes = {
   days: PropTypes.number,
   description: PropTypes.string,
   country: PropTypes.object,
+  id: PropTypes.string,
 };
 
-export default Trip;
+export default withRouter(Trip);
