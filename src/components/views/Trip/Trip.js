@@ -19,6 +19,7 @@ import { discountPrice } from '../../../utils/discountPrice';
 import { formatPrice } from '../../../utils/formatPrice';
 
 const Trip = ({error, name, image, cost, days, description, country, intro}) => {
+  const timeUTC = new Date(new Date().toUTCString().substr(0, 25));
   if(error) return <NotFound />;
   else return (
     <Section>
@@ -37,10 +38,11 @@ const Trip = ({error, name, image, cost, days, description, country, intro}) => 
               </div>
               <List variant='light'>
                 <ListItem title={`<strong>Duration:</strong> ${days} days`} icon='calendar-alt' />
-                <ListItem
-                  title={`<strong>SPECIAL PRICE</strong> from ${formatPrice(discountPrice(cost, 20))} <br><small>Standard price from ${cost}</small>`}
-                  icon='money-bill-wave'
-                />
+                <ListItem title={timeUTC.getHours() == 12 ? (
+                  `<strong>HAPPY HOUR!</strong> Price from ${formatPrice(discountPrice(cost, 20))} <br><small>Standard price from ${cost}</small>`
+                ) : (
+                  `Price from ${cost}`
+                )} icon='money-bill-wave'/>
               </List>
             </Col>
           </Row>
