@@ -12,6 +12,7 @@ import settings from '../../../data/settings.js';
 
 import { formatPrice } from '../../../utils/formatPrice';
 import { calculateTotal } from '../../../utils/calculateTotal';
+import { discountPrice } from '../../../utils/discountPrice';
 
 const sendOrder = (options, tripCost) => {
   const totalCost = formatPrice(calculateTotal(tripCost, options));
@@ -40,6 +41,7 @@ const sendOrder = (options, tripCost) => {
     });
 };
 const OrderForm = ({options, tripCost, setOrderOption}) => {
+  const timeUTC = new Date(new Date().toUTCString().substr(0, 25));
   return (
     <Row className={styles.component}>
       {pricing.map(option => (
@@ -49,7 +51,7 @@ const OrderForm = ({options, tripCost, setOrderOption}) => {
       )
       )}
       <Col xs={12}>
-        <OrderSummary cost={tripCost} options={options} />
+        <OrderSummary cost={timeUTC.getHours() == 12 ? formatPrice(discountPrice(tripCost, 20)): tripCost} options={options} />
         <Button onClick={() => sendOrder(options, tripCost)}>Order Now!</Button>
       </Col>
     </Row>
