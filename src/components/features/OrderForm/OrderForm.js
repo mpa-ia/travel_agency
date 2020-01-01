@@ -43,7 +43,7 @@ const sendOrder = (trip, options, tripCost) => {
 };
 
 const OrderForm = ({trip, options, tripCost, setOrderOption}) => {
-  console.log(trip);
+  const isEnabled = options.name.length > 3 && options.contact.length > 8;
   const timeUTC = new Date(new Date().toUTCString().substr(0, 25));
   return (
     <Row className={styles.component}>
@@ -55,7 +55,7 @@ const OrderForm = ({trip, options, tripCost, setOrderOption}) => {
       )}
       <Col xs={12}>
         <OrderSummary cost={timeUTC.getHours() == 12 ? formatPrice(discountPrice(tripCost, 20)): tripCost} options={options} />
-        <Button onClick={() => sendOrder(trip, options, tripCost)}>Order Now!</Button>
+        <Button disabled={!isEnabled} onClick={() => sendOrder(trip, options, tripCost)}>Order Now!</Button>
       </Col>
     </Row>
   );
