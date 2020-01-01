@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import styles from './TripSummary.scss';
 import {Col} from 'react-flexbox-grid';
+import HTMLParser from 'react-html-parser';
 
 import { discountPrice } from '../../../utils/discountPrice';
 import { formatPrice } from '../../../utils/formatPrice';
@@ -19,7 +20,7 @@ const TripSummary = ({id, image, name, cost, days, tags}) => {
           <div className={styles.details}>
             <span>{days} days</span>
             <span>{timeUTC.getHours() == 12 ? (
-              `<strong>HAPPY HOUR!</strong> Price from ${formatPrice(discountPrice(cost, 20))} <br><small>Standard price from ${cost}</small>`
+              HTMLParser(`<strong>HAPPY HOUR!</strong><br> Price from <strong>${formatPrice(discountPrice(cost, 20))}</strong> <br><small>Standard price from ${cost}</small>`)
             ) : (
               `Price from ${cost}`)}</span>
           </div>
