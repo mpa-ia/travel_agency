@@ -10,6 +10,6 @@ export const discountPrice = (regularPrice, discount) => {
   ) {
     return null;
   } else {
-    return price - (price * (discount/100));
+    return `$${(price - (price * (discount/100))).toFixed(2)}`;
   }
 };
